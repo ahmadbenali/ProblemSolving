@@ -78,3 +78,65 @@ public String longestCommonPrefix(String[] strs) {
         
     }
 ```
+
+## Best time to buy and sell stock
+see my thoughts on tablet.
+
+### Brute force
+```
+time limit public int maxProfit(int[] prices) {
+
+
+
+
+
+int max=0;
+
+int len=prices.length;
+
+
+
+for(int buy=0;buy<len;buy++)
+
+{
+
+for(int sell=buy+1;sell<len;sell++)
+
+{
+
+if(buy<sell) max=Math.max(prices[sell]-prices[buy],max);
+
+}
+
+}
+
+
+
+return max;
+
+}
+```
+> [!NOTE]
+> Time limit with nested loop . not good enought
+
+### without nested loop
+```
+public int maxProfit(int[] prices) {
+
+
+        int min=Integer.MAX_VALUE;
+        int max=0;
+        int len=prices.length;
+
+        for(int i=0;i<len;i++)
+        {
+            if(prices[i]<min) min=prices[i];
+
+            else if(max<prices[i]-min) max=prices[i]-min;
+        }
+
+        return max;
+    }
+```
+> [!NOTE]
+> perfect . RunTime = 1ms , Memory = 94 MB
