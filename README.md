@@ -52,3 +52,29 @@ public int[] twoSum(int[] nums, int target) {
 ```
 > [!NOTE]
 > RunTime = 2ms , Memory = 47.14
+
+## Longest common prefix 
+see my thoughts on tablet.
+### Brute force
+```
+public String longestCommonPrefix(String[] strs) {
+
+        if (strs == null || strs.length == 0) return "";
+
+        int len=strs[0].length();
+
+        for(int i=0;i<len;i++)
+        {
+            char c=strs[0].charAt(i);
+
+            for(int j=1;j<strs.length;j++)
+            {
+                if(i == strs[j].length() || strs[j].charAt(i) != c)
+                return strs[0].substring(0,i);
+            }
+        }
+
+        return strs[0];
+        
+    }
+```
