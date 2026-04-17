@@ -140,3 +140,31 @@ public int maxProfit(int[] prices) {
 ```
 > [!NOTE]
 > perfect . RunTime = 1ms , Memory = 94 MB
+
+## Valid Parentheses
+You use a Stack because it follows the LIFO (Last-In, First-Out) principle, which is perfect for nested structures like parentheses
+
+```
+public boolean isValid(String s) {
+        
+        Stack<Character> stack=new Stack<>();
+
+        for(char c:s.toCharArray())
+        {
+            if(c=='(' || c=='[' || c=='{') stack.push(c);
+            else
+            {
+                //to check if there are open in s
+                if(stack.isEmpty()) return false;
+
+                char p=stack.pop();
+                if(c==')' && p !='(') return false;
+                if(c==']' && p !='[') return false;
+                if(c=='}' && p !='{') return false;
+                
+            }
+        }
+        //return true; will not work if s = [ .
+        return stack.isEmpty();
+    }
+```
